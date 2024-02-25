@@ -1,7 +1,8 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import * as icons from "react-icons/gi";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, WrapItem } from "@chakra-ui/react";
+
 import { Tile } from "./Tile";
 
 export const possibleTileContents = [

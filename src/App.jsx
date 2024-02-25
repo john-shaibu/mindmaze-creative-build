@@ -6,7 +6,7 @@ function App() {
 
   switch (gameState) {
     case "start":
-      return <StartScreen start={() => setGameState("play")} />;
+      return <StartScreen start={() => setGameState("play")} w="max-content" />;
     case "play":
       return <PlayScreen end={() => setGameState("start")} />;
     default:
