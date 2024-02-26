@@ -1,9 +1,24 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import * as icons from "react-icons/gi";
-import { Box, Button, WrapItem } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Icon,
+  Text,
+  Grid,
+} from "@chakra-ui/react";
 
 import { Tile } from "./Tile";
+import {
+  RankingIcon,
+  Logo,
+  PlayIcon,
+  SettingsIcon,
+  BgRibbonIcon,
+} from "./icons";
 
 export const possibleTileContents = [
   icons.GiHearts,
@@ -20,9 +35,126 @@ export const possibleTileContents = [
 
 export function StartScreen({ start }) {
   return (
-    <Box>
-      <Button onClick={start}>Play</Button>
-    </Box>
+    <>
+      <Grid
+        placeContent="center"
+        minHeight="100vh"
+        bgImage="background.svg"
+        position="relative"
+        fontFamily="quicksand"
+        gap={"4rem"}
+      >
+        <Container
+          maxW="400px"
+          minH="400px"
+          bg="primary.100.20"
+          outline="8px solid white"
+          borderRadius="16px"
+          backfaceVisibility="blur(20px)"
+          boxShadow="bg"
+          position="relative"
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          p="2em"
+          gap="2em"
+        >
+          <Box
+            w="100%"
+            position="absolute"
+            top={0}
+            left="10%"
+            width="max-content"
+          >
+            <BgRibbonIcon />
+          </Box>
+
+          <Logo />
+          <Text color="#03045E" fontSize="18px" fontWeight="500">
+            Flip over tiles looking for pairs
+          </Text>
+
+          <Text
+            textAlign="center"
+            color="#023E8A"
+            fontSize="12px"
+            fontWeight="500"
+            lineHeight="20px"
+            maxW="40ch"
+          >
+            Welcome to Mind Maze! Sharpen your mind with thrilling flips and
+            challenges. Let’s embark on this adventure together.
+          </Text>
+          <Button
+            rounded={"full"}
+            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+            color={"white"}
+            boxShadow={"cta"}
+            position={"relative"}
+            display={"flex"}
+            _before={{
+              bgBlendMode: "lighten",
+              boxShadow: "cta-inner",
+              content: '""',
+              inset: 0,
+              rounded: "full",
+              w: "100%",
+              pos: "absolute",
+            }}
+            gap="16px"
+            h="48px"
+            w="120px"
+            onClick={start}
+          >
+            <PlayIcon />
+            <Text>Play</Text>
+          </Button>
+        </Container>
+
+        <Flex gap={8} justifyContent={"center"}>
+          <Button
+            rounded={"full"}
+            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+            color={"white"}
+            boxShadow={"cta"}
+            position={"relative"}
+            h="72px"
+            w="72px"
+            _before={{
+              mixBlendMode: "lighten",
+              boxShadow: "cta-inner",
+              content: '""',
+              inset: 0,
+              rounded: "full",
+              w: "100%",
+              pos: "absolute",
+            }}
+          >
+            <Icon as={RankingIcon} h="32px" w="32px" />
+          </Button>
+          <Button
+            rounded={"full"}
+            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+            color={"white"}
+            boxShadow={"cta"}
+            position={"relative"}
+            w={"72px"}
+            h={"72px"}
+            _before={{
+              bgBlendMode: "lighten",
+              boxShadow: "cta-inner",
+              content: '""',
+              inset: 0,
+              rounded: "full",
+              w: "100%",
+              pos: "absolute",
+            }}
+          >
+            <SettingsIcon></SettingsIcon>
+          </Button>
+        </Flex>
+      </Grid>
+    </>
   );
 }
 
@@ -107,12 +239,97 @@ export function PlayScreen({ end }) {
 
   return (
     <>
-      <Box>
-        {getTiles(6).map((tile, i) => (
-          <Tile key={i} flip={() => flip(i)} {...tile} />
-        ))}
-      </Box>
-      {tryCount}
+      <Grid
+        placeContent="center"
+        minHeight="100vh"
+        bgImage="background.svg"
+        position="relative"
+        fontFamily="quicksand"
+        gap={"4rem"}
+      >
+        <Box w="max-content" mx={"auto"}>
+          <Logo />
+        </Box>
+
+        <Flex w="100%" direction="column" align="center" gap="2em">
+          <Button
+            rounded={"full"}
+            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+            color={"white"}
+            boxShadow={"cta"}
+            position={"relative"}
+            display="flex"
+            gap={2}
+            _before={{
+              bgBlendMode: "lighten",
+              boxShadow: "cta-inner",
+              content: '""',
+              inset: 0,
+              rounded: "full",
+              w: "100%",
+              pos: "absolute",
+            }}
+            fontFamily="brush"
+            letterSpacing="3%"
+          >
+            <Text letterSpacing="3%">Tries:</Text>
+            <Text>{tryCount}</Text>
+          </Button>
+
+          <Container
+            maxW="400px"
+            minH="400px"
+            bg="primary.100.20"
+            outline="8px solid white"
+            borderRadius="16px"
+            backfaceVisibility="blur(20px)"
+            boxShadow="bg"
+            position="relative"
+            p="24px"
+            w={"400px"}
+            h={"400px"}
+          >
+            <Grid
+              templateColumns="repeat(4, 1fr)"
+              gap={3}
+              h={"100%"}
+              justifyContent="center"
+              justifyItems="center"
+              alignItems="center"
+              templateRows="repeat(4, 1fr)"
+            >
+              {getTiles(16).map((tile, i) => (
+                <>
+                  <Tile flip={() => flip(i)} {...tile} />
+                </>
+              ))}
+            </Grid>
+          </Container>
+        </Flex>
+
+        <Flex gap={8} justifyContent={"center"}>
+          <Button
+            rounded={"full"}
+            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+            color={"white"}
+            boxShadow={"cta"}
+            position={"relative"}
+            w="72px"
+            h="72px"
+            _before={{
+              bgBlendMode: "lighten",
+              boxShadow: "cta-inner",
+              content: '""',
+              inset: 0,
+              rounded: "full",
+              w: "100%",
+              pos: "absolute",
+            }}
+          >
+            <SettingsIcon />
+          </Button>
+        </Flex>
+      </Grid>
     </>
   );
 }

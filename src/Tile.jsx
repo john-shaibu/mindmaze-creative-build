@@ -1,29 +1,33 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 
 export function Tile({ content: Content, flip, state }) {
-  switch (state) {
-    case "start":
-      return (
-        <Box
-          onClick={flip}
-          display="inline-block"
-          width={8}
-          height={8}
-          textAlign="center"
-          bg="gray.500"
-        >
-          ?
-        </Box>
-      );
-    case "flipped":
-      return (
-        <Box
-          display="inline-block"
-          width={8}
-          height={8}
-          textAlign="center"
-          bg="yellow.500"
-        >
+  return (
+    <>
+      <Button
+        display="inline-block"
+        width={"100%"}
+        height={"100%"}
+        textAlign="center"
+        position={"relative"}
+        mx={"3px"}
+        mb={"1px"}
+        mt={"3px"}
+        className="tile-button"
+        _before={{
+          "--_colors": "#CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4",
+          content: '""',
+          position: "absolute",
+          "z-index": -1,
+          inset: "-3px -3px 1px -3px",
+          width: "calc(100% + 6px)",
+          height: "calc(100% + 4px)",
+          background:
+            "conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors))",
+          "border-radius": "inherit",
+          animation: "rotate 10s linear infinite",
+        }}
+      >
+        {state !== "start" ? (
           <Content
             style={{
               display: "inline-block",
@@ -32,28 +36,8 @@ export function Tile({ content: Content, flip, state }) {
               verticalAlign: "top",
             }}
           />
-        </Box>
-      );
-    case "matched":
-      return (
-        <Box
-          display="inline-block"
-          width={8}
-          height={8}
-          textAlign="center"
-          color="gray.300"
-        >
-          <Content
-            style={{
-              display: "inline-block",
-              width: "100%",
-              height: "100%",
-              verticalAlign: "top",
-            }}
-          />
-        </Box>
-      );
-    default:
-      throw new Error("Invalid state " + state);
-  }
+        ) : null}
+      </Button>
+    </>
+  );
 }

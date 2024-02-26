@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StartScreen, PlayScreen } from "./Screens";
+import './App.css'
 
 function App() {
   const [gameState, setGameState] = useState("start");

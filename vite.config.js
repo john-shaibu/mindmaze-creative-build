@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import svgr from 'vite-plugin-svgr'
 
 const babelPlugins = [];
 
@@ -9,7 +10,7 @@ if (process.env.MIGHTYMELD) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
+  plugins: [svgr(),
     react({
       babel: {
         plugins: babelPlugins,

@@ -6,7 +6,14 @@ import {
   Flex,
   Heading,
   HStack,
+  Icon,
   Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
   Stack,
   Text,
   VStack,
@@ -22,7 +29,6 @@ import {
   Select,
   Textarea,
   Link,
-  Icon,
   Radio,
   NumberInputField,
   NumberInputStepper,
@@ -84,14 +90,7 @@ export function _HStack() {
 }
 
 export function _Icon() {
-  return (
-    <Icon viewBox="0 0 200 200" color="red.500">
-      <path
-        fill="currentColor"
-        d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
-      />
-    </Icon>
-  );
+  return <Icon></Icon>;
 }
 
 export function _Image() {
@@ -184,4 +183,122 @@ export function __WrapItem() {
       <WrapItem></WrapItem>
     </Wrap>
   );
+}
+
+export function __CtaButton() {
+  return (
+    <Button
+      rounded={"full"}
+      bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+      color={"white"}
+      boxShadow={"cta"}
+      position={"relative"}
+      _before={{
+        bgBlendMode: "lighten",
+        boxShadow: "cta-inner",
+        content: '""',
+        inset: 0,
+        rounded: "full",
+        w: "100%",
+        pos: "absolute",
+      }}
+    >
+      Gradient Button
+    </Button>
+  );
+}
+
+export function __GameContainer() {
+  return (
+    <Container
+      maxW="400px"
+      minW={"362px"}
+      minH="400px"
+      bg="primary.100.20"
+      outline="8px solid white"
+      borderRadius="16px"
+      backfaceVisibility="blur(20px)"
+      boxShadow="bg"
+      position="relative"
+      p="2em"
+    >
+      Game Container
+    </Container>
+  );
+}
+
+export function __BodyContainer() {
+  return (
+    <Grid
+      placeContent="center"
+      minHeight="100vh"
+      bgImage="background.svg"
+      position="relative"
+      fontFamily="quicksand"
+      gap={"4rem"}
+    >
+      Body container
+    </Grid>
+  );
+}
+
+export function __IconsContainer() {
+  return (
+    <Flex gap={8} justifyContent={"center"}>
+      Body container
+    </Flex>
+  );
+}
+
+export function __TileButton() {
+  return (
+    <Button
+      display="inline-block"
+      width={"100%"}
+      height={"100%"}
+      textAlign="center"
+      position={"relative"}
+      mx={"3px"}
+      mb={"1px"}
+      mt={"3px"}
+      className="tile-button"
+      _before={{
+        "--_colors": "#CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4",
+        content: '""',
+        position: "absolute",
+        "z-index": -1,
+        inset: "-3px -3px 1px -3px",
+        width: "calc(100% + 6px)",
+        height: "calc(100% + 4px)",
+        background:
+          "conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors))",
+        "border-radius": "inherit",
+        animation: "rotate 10s linear infinite",
+      }}
+    ></Button>
+  );
+}
+
+export function __Modal() {
+  return <Modal></Modal>;
+}
+
+export function __ModalOverlay() {
+  return <ModalOverlay></ModalOverlay>;
+}
+
+export function __ModalHeader() {
+  return <ModalHeader></ModalHeader>;
+}
+
+export function __ModalContent() {
+  return <ModalContent></ModalContent>;
+}
+
+export function __ModalBody() {
+  return <ModalBody></ModalBody>;
+}
+
+export function __ModalFooter() {
+  return <ModalFooter></ModalFooter>;
 }

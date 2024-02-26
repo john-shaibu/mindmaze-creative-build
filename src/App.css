@@ -1,0 +1,29 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 45deg;
+  }
+
+.tile-button::before{
+    --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
+    --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 80%, #00B4D8 85%, #00B4D8);
+
+    background: var(--_bg-colors);
+}
+
+@keyframes rotate {
+    to{ --gradient-angle: 360deg }
+}
+
+.tile-button[data-state=start]{
+
+}
+
+.tile-button[data-state=flipped]{
+
+}
+
+.tile-button[data-state=matched]{
+    
+}
+
