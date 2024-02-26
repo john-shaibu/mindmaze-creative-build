@@ -26,8 +26,10 @@ export const switchTheme = defineMultiStyleConfig({ baseStyle })
 
 const Button = defineStyleConfig({
   baseStyle: {
+    transition: 'none',
     _hover: {
-      background: 'red'
+      'background': 'unset',
+      'background-image': 'unset'
     }
   }
 })

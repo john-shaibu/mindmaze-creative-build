@@ -10,7 +10,7 @@
     --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 80%, #00B4D8 85%, #00B4D8);
     
     background: var(--_bg-colors);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .1s !important;
 }
 
 .tile-button::before{
