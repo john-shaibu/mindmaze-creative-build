@@ -19,6 +19,7 @@ import {
   SettingsIcon,
   BgRibbonIcon,
 } from "./icons";
+import { useModal } from "./state/useModal";
 
 export const possibleTileContents = [
   icons.GiHearts,
@@ -34,6 +35,9 @@ export const possibleTileContents = [
 ];
 
 export function StartScreen({ start }) {
+  const { state, showModal, hideModal } = useModal();
+  const { show: isModalOpen, modal: modalId } = state;
+
   return (
     <>
       <Grid
@@ -50,7 +54,7 @@ export function StartScreen({ start }) {
           bg="primary.100.20"
           outline="8px solid white"
           borderRadius="16px"
-          backfaceVisibility="blur(20px)"
+          backdropFilter="blur(20px)"
           boxShadow="bg"
           position="relative"
           display="flex"
@@ -129,6 +133,7 @@ export function StartScreen({ start }) {
               w: "100%",
               pos: "absolute",
             }}
+            onClick={() => showModal("leaderboard")}
           >
             <Icon as={RankingIcon} h="32px" w="32px" />
           </Button>
@@ -149,6 +154,7 @@ export function StartScreen({ start }) {
               w: "100%",
               pos: "absolute",
             }}
+            onClick={() => showModal("settings")}
           >
             <SettingsIcon></SettingsIcon>
           </Button>
@@ -161,6 +167,8 @@ export function StartScreen({ start }) {
 export function PlayScreen({ end }) {
   const [tiles, setTiles] = useState(null);
   const [tryCount, setTryCount] = useState(0);
+  const { state, showModal, hideModal } = useModal();
+  const { show: isModalOpen, modal: modalId } = state;
 
   const getTiles = (tileCount) => {
     // Throw error if count is not even.
@@ -282,7 +290,7 @@ export function PlayScreen({ end }) {
             bg="primary.100.20"
             outline="8px solid white"
             borderRadius="16px"
-            backfaceVisibility="blur(20px)"
+            backdropFilter="blur(20px)"
             boxShadow="bg"
             position="relative"
             p="24px"
@@ -325,6 +333,7 @@ export function PlayScreen({ end }) {
               w: "100%",
               pos: "absolute",
             }}
+            onClick={() => showModal('settings')}
           >
             <SettingsIcon />
           </Button>

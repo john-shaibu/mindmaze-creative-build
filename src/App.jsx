@@ -4,7 +4,6 @@ import './App.css'
 
 function App() {
   const [gameState, setGameState] = useState("start");
-
   switch (gameState) {
     case "start":
       return <StartScreen start={() => setGameState("play")} w="max-content" />;

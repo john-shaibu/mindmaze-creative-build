@@ -4,11 +4,16 @@
     initial-value: 45deg;
   }
 
-.tile-button::before{
-    --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
+.tile-button{
+    --_pseudo-grad-colors: linear-gradient(#CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4);
     --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 80%, #00B4D8 85%, #00B4D8);
-
+    
     background: var(--_bg-colors);
+}
+
+.tile-button::before{
+
+    background: conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors));
 }
 
 @keyframes rotate {

@@ -2,7 +2,7 @@ import { extendTheme, defineStyleConfig } from "@chakra-ui/react";
 
 const Button = defineStyleConfig({
   baseStyle: {
-    _hover: { background: 'unset' }
+    bg: null
   }
 })
 

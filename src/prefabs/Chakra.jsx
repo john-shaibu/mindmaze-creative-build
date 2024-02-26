@@ -217,7 +217,7 @@ export function __GameContainer() {
       bg="primary.100.20"
       outline="8px solid white"
       borderRadius="16px"
-      backfaceVisibility="blur(20px)"
+      backdropFilter="blur(20px)"
       boxShadow="bg"
       position="relative"
       p="2em"

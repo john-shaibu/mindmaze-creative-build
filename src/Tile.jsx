@@ -21,11 +21,13 @@ export function Tile({ content: Content, flip, state }) {
           inset: "-3px -3px 1px -3px",
           width: "calc(100% + 6px)",
           height: "calc(100% + 4px)",
-          background:
-            "conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors))",
           "border-radius": "inherit",
           animation: "rotate 10s linear infinite",
         }}
+        bgGradient={"var(--_bg-colors)"}
+        data-state={state}
+        key={Content}
+        onClick={flip}
       >
         {state !== "start" ? (
           <Content
