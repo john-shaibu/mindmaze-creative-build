@@ -212,7 +212,7 @@ export function __GameContainer() {
   return (
     <Container
       maxW="400px"
-      minW={"362px"}
+      minW={"348px"}
       minH="400px"
       bg="primary.100.20"
       outline="8px solid white"
@@ -261,6 +261,7 @@ export function __TileButton() {
       mx={"3px"}
       mb={"1px"}
       mt={"3px"}
+      bg={'white'}
       className="tile-button"
       _before={{
         "--_colors": "#CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4",
@@ -301,4 +302,8 @@ export function __ModalBody() {
 
 export function __ModalFooter() {
   return <ModalFooter></ModalFooter>;
+}
+
+return function __ToggleButton(){
+  return <Switch isChecked={true} onChange={(e) => console.log(e)}></Switch>
 }

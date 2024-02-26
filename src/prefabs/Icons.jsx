@@ -5,6 +5,12 @@ import {
   RankingIcon,
   SettingsIcon,
   Logo,
+  LeaderboardRibbon,
+  RankingLeaderBoard,
+  CloseIcon,
+  SettingsModalHeader,
+  SoundText,
+  SoundEffectText,
 } from "../icons";
 
 export function _SettingsIcon() {
@@ -41,4 +47,24 @@ export function _PlayIcon2() {
 
 export function _Logo() {
   return <Logo />;
+}
+
+export function _LeaderBoardRibbon() {
+  return <LeaderboardRibbon />;
+}
+
+export function _RankingLeaderBoard() {
+  return <RankingLeaderBoard />;
+}
+export function _CloseIcon() {
+  return <CloseIcon />;
+}
+export function _SettingsModalHeader() {
+  return <SettingsModalHeader />;
+}
+export function _SoundText() {
+  return <SoundText />;
+}
+export function _SoundEffectText() {
+  return <SoundEffectText />;
 }

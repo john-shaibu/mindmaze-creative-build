@@ -5,14 +5,15 @@
   }
 
 .tile-button{
-    --_pseudo-grad-colors: linear-gradient(#CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4);
+    --gradient-angle: 45deg;
+    --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
     --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 80%, #00B4D8 85%, #00B4D8);
     
     background: var(--_bg-colors);
+    transition: all ease-in-out .3s;
 }
 
 .tile-button::before{
-
     background: conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors));
 }
 
@@ -20,12 +21,11 @@
     to{ --gradient-angle: 360deg }
 }
 
-.tile-button[data-state=start]{
-
-}
 
 .tile-button[data-state=flipped]{
-
+    color: white;
+    --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
+    --_bg-colors: linear-gradient(to right, #0096C7, #023E8A);
 }
 
 .tile-button[data-state=matched]{

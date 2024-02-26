@@ -19,7 +19,7 @@ import {
   SettingsIcon,
   BgRibbonIcon,
 } from "./icons";
-import { useModal } from "./state/useModal";
+import { useGlobalState } from "./state/useGlobalState";
 
 export const possibleTileContents = [
   icons.GiHearts,
@@ -35,8 +35,8 @@ export const possibleTileContents = [
 ];
 
 export function StartScreen({ start }) {
-  const { state, showModal, hideModal } = useModal();
-  const { show: isModalOpen, modal: modalId } = state;
+  const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
+  const { show: isModalOpen, modal: modalId } = globalState;
 
   return (
     <>
@@ -133,31 +133,33 @@ export function StartScreen({ start }) {
               w: "100%",
               pos: "absolute",
             }}
-            onClick={() => showModal("leaderboard")}
+            onClick={() => showModal("gameanalysis")}
           >
             <Icon as={RankingIcon} h="32px" w="32px" />
           </Button>
-          <Button
-            rounded={"full"}
-            bgGradient={"linear(to-r, #0096C7, #023E8A)"}
-            color={"white"}
-            boxShadow={"cta"}
-            position={"relative"}
-            w={"72px"}
-            h={"72px"}
-            _before={{
-              bgBlendMode: "lighten",
-              boxShadow: "cta-inner",
-              content: '""',
-              inset: 0,
-              rounded: "full",
-              w: "100%",
-              pos: "absolute",
-            }}
-            onClick={() => showModal("settings")}
-          >
-            <SettingsIcon></SettingsIcon>
-          </Button>
+          <Flex>
+            <Button
+              rounded={"full"}
+              bgGradient={"linear(to-r, #0096C7, #023E8A)"}
+              color={"white"}
+              boxShadow={"cta"}
+              position={"relative"}
+              w={"72px"}
+              h={"72px"}
+              _before={{
+                bgBlendMode: "lighten",
+                boxShadow: "cta-inner",
+                content: '""',
+                inset: 0,
+                rounded: "full",
+                w: "100%",
+                pos: "absolute",
+              }}
+              onClick={() => showModal("settings")}
+            >
+              <SettingsIcon></SettingsIcon>
+            </Button>
+          </Flex>
         </Flex>
       </Grid>
     </>
@@ -167,8 +169,8 @@ export function StartScreen({ start }) {
 export function PlayScreen({ end }) {
   const [tiles, setTiles] = useState(null);
   const [tryCount, setTryCount] = useState(0);
-  const { state, showModal, hideModal } = useModal();
-  const { show: isModalOpen, modal: modalId } = state;
+  const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
+  const { show: isModalOpen, modal: modalId } = globalState;
 
   const getTiles = (tileCount) => {
     // Throw error if count is not even.
@@ -333,7 +335,7 @@ export function PlayScreen({ end }) {
               w: "100%",
               pos: "absolute",
             }}
-            onClick={() => showModal('settings')}
+            onClick={() => showModal("settings")}
           >
             <SettingsIcon />
           </Button>
