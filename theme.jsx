@@ -36,8 +36,8 @@ const Button = defineStyleConfig({
 
 export default extendTheme({
   components: {
-    Button,
-    Switch: switchTheme
+    // Button,
+    // Switch: switchTheme
   },
   colors: {
     'primary': {
