@@ -193,6 +193,11 @@ export function __CtaButton() {
       color={"white"}
       boxShadow={"cta"}
       position={"relative"}
+      _hover={{
+        'scaleX': 1.1,
+        'scaleY': 1.1,
+        transition: 'transform .3s ease-in-out'
+      }}
       _before={{
         bgBlendMode: "lighten",
         boxShadow: "cta-inner",
@@ -304,6 +309,6 @@ export function __ModalFooter() {
   return <ModalFooter></ModalFooter>;
 }
 
-return function __ToggleButton(){
+return function __ToggleButton() {
   return <Switch isChecked={true} onChange={(e) => console.log(e)}></Switch>
 }

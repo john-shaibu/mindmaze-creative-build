@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import * as icons from "react-icons/gi";
 import {
@@ -96,6 +96,11 @@ export function StartScreen({ start }) {
             boxShadow={"cta"}
             position={"relative"}
             display={"flex"}
+            _hover={{
+              'scaleX': 1.1,
+              'scaleY': 1.1,
+              transition: 'transform .3s ease-in-out'
+            }}
             _before={{
               bgBlendMode: "lighten",
               boxShadow: "cta-inner",
@@ -124,6 +129,11 @@ export function StartScreen({ start }) {
             position={"relative"}
             h="72px"
             w="72px"
+            _hover={{
+              'scaleX': 1.1,
+              'scaleY': 1.1,
+              transition: 'transform .3s ease-in-out'
+            }}
             _before={{
               mixBlendMode: "lighten",
               boxShadow: "cta-inner",
@@ -146,6 +156,11 @@ export function StartScreen({ start }) {
               position={"relative"}
               w={"72px"}
               h={"72px"}
+              _hover={{
+                'scaleX': 1.1,
+                'scaleY': 1.1,
+                transition: 'transform .3s ease-in-out'
+              }}
               _before={{
                 bgBlendMode: "lighten",
                 boxShadow: "cta-inner",
@@ -167,6 +182,7 @@ export function StartScreen({ start }) {
 }
 
 export function PlayScreen({ end }) {
+  const startTime = useRef(new Date())
   const [tiles, setTiles] = useState(null);
   const [tryCount, setTryCount] = useState(0);
   const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
@@ -192,6 +208,7 @@ export function PlayScreen({ end }) {
       .sort(() => Math.random() - 0.5)
       .map((content) => ({ content, state: "start" }));
 
+    console.log(shuffledContents.map((i, index) => `${index + 1} ${i.content.name}`).join(', \n'));
     setTiles(shuffledContents);
     return shuffledContents;
   };
@@ -231,7 +248,7 @@ export function PlayScreen({ end }) {
 
           // If all tiles are matched, the game is over.
           if (newTiles.every((tile) => tile.state === "matched")) {
-            setTimeout(end, 0);
+            setTimeout(() => end({ tryCount, timeSpent: new Date() - startTime.current }), 0);
           }
 
           return newTiles;
@@ -270,6 +287,11 @@ export function PlayScreen({ end }) {
             position={"relative"}
             display="flex"
             gap={2}
+            _hover={{
+              'scaleX': 1.1,
+              'scaleY': 1.1,
+              transition: 'transform .3s ease-in-out'
+            }}
             _before={{
               bgBlendMode: "lighten",
               boxShadow: "cta-inner",
@@ -326,6 +348,11 @@ export function PlayScreen({ end }) {
             position={"relative"}
             w="72px"
             h="72px"
+            _hover={{
+              'scaleX': 1.1,
+              'scaleY': 1.1,
+              transition: 'transform .3s ease-in-out'
+            }}
             _before={{
               bgBlendMode: "lighten",
               boxShadow: "cta-inner",

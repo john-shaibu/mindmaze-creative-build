@@ -28,8 +28,8 @@
 
 .tile-button[data-state=flipped]{
     color: white;
-    --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
-    --_bg-colors: linear-gradient(to right, #0096C7, #023E8A);
+    --_pseudo-grad-colors: #0096C7, #023E8A;
+    --_bg-colors: hsl(195, 100%, 39%);
 }
 
 .tile-button[data-state=matched]{

@@ -25,10 +25,11 @@ import {
   SoundText,
   SoundEffectText,
 } from "./icons";
+import { formattime } from "./utils";
 
 const Modals = ({ children }) => {
   const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
-  const { show: isOpen, modal: modalId } = globalState;
+  const { show: isOpen, modal: modalId, tryCount, timeSpent } = globalState;
 
   return (
     <>
@@ -105,6 +106,11 @@ const Modals = ({ children }) => {
                 color={"white"}
                 boxShadow={"cta"}
                 position={"relative"}
+                _hover={{
+                  'scaleX': 1.1,
+                  'scaleY': 1.1,
+                  transition: 'transform .3s ease-in-out'
+                }}
                 _before={{
                   bgBlendMode: "lighten",
                   boxShadow: "cta-inner",
@@ -131,6 +137,11 @@ const Modals = ({ children }) => {
               color={"white"}
               boxShadow={"cta"}
               position={"relative"}
+              _hover={{
+                'scaleX': 1.1,
+                'scaleY': 1.1,
+                transition: 'transform .3s ease-in-out'
+              }}
               _before={{
                 bgBlendMode: "lighten",
                 boxShadow: "cta-inner",
@@ -150,6 +161,7 @@ const Modals = ({ children }) => {
             </Button>
           </Grid>
         </ModalContent>
+
       </Modal>
       <Modal
         closeOnOverlayClick={false}
@@ -224,6 +236,11 @@ const Modals = ({ children }) => {
               color={"white"}
               boxShadow={"cta"}
               position={"relative"}
+              _hover={{
+                'scaleX': 1.1,
+                'scaleY': 1.1,
+                transition: 'transform .3s ease-in-out'
+              }}
               _before={{
                 bgBlendMode: "lighten",
                 boxShadow: "cta-inner",
@@ -321,7 +338,7 @@ const Modals = ({ children }) => {
                   alignItems={"center"}
                 >
                   <Text>Total time spent</Text>
-                  <Text>1:45s</Text>
+                  <Text>{formattime(timeSpent)}</Text>
                 </Box>
                 <Box
                   w="100%"
@@ -336,8 +353,8 @@ const Modals = ({ children }) => {
                   justifyContent={"space-between"}
                   alignItems={"center"}
                 >
-                  <Text>Total time spent</Text>
-                  <Text>1:45s</Text>
+                  <Text>Tries</Text>
+                  <Text>{tryCount}</Text>
                 </Box>
                 <Box
                   w="100%"
@@ -364,6 +381,11 @@ const Modals = ({ children }) => {
                   color={"white"}
                   boxShadow={"cta"}
                   position={"relative"}
+                  _hover={{
+                    'scaleX': 1.1,
+                    'scaleY': 1.1,
+                    transition: 'transform .3s ease-in-out'
+                  }}
                   _before={{
                     bgBlendMode: "lighten",
                     boxShadow: "cta-inner",
@@ -389,6 +411,11 @@ const Modals = ({ children }) => {
                   color={"white"}
                   boxShadow={"cta"}
                   position={"relative"}
+                  _hover={{
+                    'scaleX': 1.1,
+                    'scaleY': 1.1,
+                    transition: 'transform .3s ease-in-out'
+                  }}
                   _before={{
                     bgBlendMode: "lighten",
                     boxShadow: "cta-inner",
@@ -417,6 +444,11 @@ const Modals = ({ children }) => {
               color={"white"}
               boxShadow={"cta"}
               position={"relative"}
+              _hover={{
+                'scaleX': 1.1,
+                'scaleY': 1.1,
+                transition: 'transform .3s ease-in-out'
+              }}
               _before={{
                 bgBlendMode: "lighten",
                 boxShadow: "cta-inner",
