@@ -2,6 +2,20 @@ import { useReducer } from "react";
 import { StateContext } from "./StateContext"
 
 function reducer(state, action) {
+    if (action.type === 'setGameState') {
+        return {
+            ...state,
+            gameState: action.gameState
+        }
+    }
+    if (action.type === 'endGame') {
+        return {
+            ...state,
+            gameState: 'play',
+            modal: 'gameanalysis',
+            show: true,
+        }
+    }
     if (action.type === 'showModal') {
         return {
             ...state,
@@ -44,9 +58,9 @@ function reducer(state, action) {
 }
 
 const StateProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, { show: false, modal: '', sound: true, sfx: true });
-    return <StateContext.Provider value={{ globalState: state, showModal: (modal) => dispatch({ type: 'showModal', modal}), hideModal: () => dispatch({ type: 'hideModal'}), setSound: (bool) => bool ? dispatch({ type: 'enableSound' }) : dispatch({ type: 'disableSound' }), setSfx: (bool) => bool ? dispatch({ type: 'enableSfx' }) : dispatch({ type: 'disableSfx' })}}>
-        { children }
+    const [state, dispatch] = useReducer(reducer, { gameState: 'start', show: false, modal: '', sound: true, sfx: true });
+    return <StateContext.Provider value={{ globalState: state, endGame: () => dispatch({ type: 'endGame' }), setGameState: (gameState) => dispatch({ type: 'setGameState', gameState }), showModal: (modal) => dispatch({ type: 'showModal', modal }), hideModal: () => dispatch({ type: 'hideModal' }), setSound: (bool) => bool ? dispatch({ type: 'enableSound' }) : dispatch({ type: 'disableSound' }), setSfx: (bool) => bool ? dispatch({ type: 'enableSfx' }) : dispatch({ type: 'disableSfx' }) }}>
+        {children}
     </StateContext.Provider>
 }
 

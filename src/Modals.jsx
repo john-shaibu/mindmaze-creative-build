@@ -33,6 +33,7 @@ const Modals = ({ children }) => {
   return (
     <>
       <Modal
+        closeOnOverlayClick={false}
         blockScrollOnMount={false}
         isOpen={isOpen && modalId == "leaderboard"}
         onClose={hideModal}
@@ -151,6 +152,7 @@ const Modals = ({ children }) => {
         </ModalContent>
       </Modal>
       <Modal
+        closeOnOverlayClick={false}
         blockScrollOnMount={false}
         isOpen={isOpen && modalId == "settings"}
         onClose={hideModal}
@@ -242,6 +244,7 @@ const Modals = ({ children }) => {
         </ModalContent>
       </Modal>
       <Modal
+        closeOnOverlayClick={false}
         blockScrollOnMount={false}
         isOpen={isOpen && modalId == "gameanalysis"}
         onClose={hideModal}

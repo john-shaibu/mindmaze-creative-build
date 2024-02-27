@@ -198,7 +198,7 @@ export function PlayScreen({ end }) {
 
   const flip = (i) => {
     // Is the tile already flipped? We don’t allow flipping it back.
-    if (tiles[i].state === "flipped") return;
+    if (tiles[i].state === "flipped" || tiles[i].state === "matched") return;
 
     // How many tiles are currently flipped?
     const flippedTiles = tiles.filter((tile) => tile.state === "flipped");

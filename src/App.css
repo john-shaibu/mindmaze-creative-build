@@ -7,10 +7,14 @@
 .tile-button{
     --gradient-angle: 45deg;
     --_pseudo-grad-colors: #CAF0F8, #ADE8F4, #CAF0F8, #ADE8F4;
-    --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 80%, #00B4D8 85%, #00B4D8);
+    --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 92%, #00B4D8 92%);
     
     background: var(--_bg-colors);
     transition: all ease-in-out .1s !important;
+}
+
+.tile-button:hover{
+    --_bg-colors: linear-gradient(#48CAE4 0%, #48CAE4 95%, #00B4D8 95%);
 }
 
 .tile-button::before{
@@ -29,6 +33,8 @@
 }
 
 .tile-button[data-state=matched]{
-    
+    --_bg-colors: hsl(190, 77%, 88%);
+    color: hsl(190, 100%, 42%);
+    cursor: not-allowed;
 }
 
