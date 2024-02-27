@@ -18,6 +18,7 @@
 }
 
 .tile-button::before{
+    animation: rotate 10s linear infinite;
     background: conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors));
 }
 
@@ -30,6 +31,10 @@
     color: white;
     --_pseudo-grad-colors: #0096C7, #023E8A;
     --_bg-colors: hsl(195, 100%, 39%);
+}
+
+.tile-button[data-state=flipped]::before{
+    animation: rotate 2s linear infinite;
 }
 
 .tile-button[data-state=matched]{

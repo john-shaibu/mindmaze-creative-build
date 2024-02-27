@@ -279,7 +279,6 @@ export function __TileButton() {
         background:
           "conic-gradient(from var(--gradient-angle), var(--_pseudo-grad-colors))",
         "border-radius": "inherit",
-        animation: "rotate 10s linear infinite",
       }}
     ></Button>
   );
