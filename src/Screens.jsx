@@ -133,7 +133,7 @@ export function StartScreen({ start }) {
               w: "100%",
               pos: "absolute",
             }}
-            onClick={() => showModal("gameanalysis")}
+            onClick={() => showModal("leaderboard")}
           >
             <Icon as={RankingIcon} h="32px" w="32px" />
           </Button>

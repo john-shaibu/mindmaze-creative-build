@@ -25,19 +25,20 @@ const baseStyle = definePartsStyle({
 export const switchTheme = defineMultiStyleConfig({ baseStyle })
 
 const Button = defineStyleConfig({
+  variants: 'unstyled',
   baseStyle: {
     transition: 'none',
     _hover: {
-      'background': 'unset',
-      'background-image': 'unset'
+      'background': '<color>',
+      'background-image': '<color>'
     }
   }
 })
 
 export default extendTheme({
   components: {
-    // Button,
-    // Switch: switchTheme
+    Button,
+    Switch: switchTheme
   },
   colors: {
     'primary': {
