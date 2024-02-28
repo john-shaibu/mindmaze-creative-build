@@ -403,6 +403,7 @@ const Modals = ({ children }) => {
                   padding={"8px 16px"}
                   minW={"56px"}
                   minH={"56px"}
+                  onClick={() => showModal('leaderboard')}
                 >
                   <RankingIcon />
                 </Button>
