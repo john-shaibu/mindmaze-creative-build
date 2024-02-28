@@ -185,8 +185,11 @@ export function PlayScreen({ end }) {
   const startTime = useRef(new Date())
   const [tiles, setTiles] = useState(null);
   const [tryCount, setTryCount] = useState(0);
+  const streak = useRef(0)
+  const longestStreak = useRef(0)
   const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
   const { show: isModalOpen, modal: modalId } = globalState;
+  console.log(streak);
 
   const getTiles = (tileCount) => {
     // Throw error if count is not even.
@@ -235,7 +238,12 @@ export function PlayScreen({ end }) {
 
       if (alreadyFlippedTile.content === justFlippedTile.content) {
         confetti();
+        if(tiles.some(tile => tile.state === 'matched')) streak.current = streak.current + 1
         newState = "matched";
+      }
+      else{
+        longestStreak.current = streak.current > longestStreak.current ? streak.current : longestStreak.current
+        streak.current = 0
       }
 
       // After a delay, either flip the tiles back or mark them as matched.
@@ -248,7 +256,7 @@ export function PlayScreen({ end }) {
 
           // If all tiles are matched, the game is over.
           if (newTiles.every((tile) => tile.state === "matched")) {
-            setTimeout(() => end({ tryCount, timeSpent: new Date() - startTime.current }), 0);
+            setTimeout(() => end({ tryCount, timeSpent: new Date() - startTime.current, streak: streak.current }), 0);
           }
 
           return newTiles;

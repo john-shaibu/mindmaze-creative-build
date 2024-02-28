@@ -28,8 +28,8 @@ import {
 import { formattime } from "./utils";
 
 const Modals = ({ children }) => {
-  const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
-  const { show: isOpen, modal: modalId, tryCount, timeSpent } = globalState;
+  const { globalState, showModal, hideModal, setSound, setSfx, setGameState } = useGlobalState();
+  const { show: isOpen, modal: modalId, tryCount, timeSpent, streak } = globalState;
 
   return (
     <>
@@ -126,6 +126,7 @@ const Modals = ({ children }) => {
                 alignItems={"center"}
                 gap={"16px"}
                 padding={"8px 16px"}
+                onClick={() => setGameState('start')}
               >
                 <PlayIcon />
                 Play game
@@ -369,8 +370,8 @@ const Modals = ({ children }) => {
                   justifyContent={"space-between"}
                   alignItems={"center"}
                 >
-                  <Text>Total time spent</Text>
-                  <Text>1:45s</Text>
+                  <Text>Longest Streak</Text>
+                  <Text>{ streak }</Text>
                 </Box>
               </Flex>
 
@@ -432,40 +433,13 @@ const Modals = ({ children }) => {
                   gap={"16px"}
                   padding={"8px 16px"}
                   fontSize="19px"
+                  onClick={() => setGameState('start')}
                 >
                   <PlayIcon />
                   Play again
                 </Button>
               </Flex>
             </Container>
-            <Button
-              rounded={"full"}
-              bgGradient={"linear(to-r, #0096C7, #023E8A)"}
-              color={"white"}
-              boxShadow={"cta"}
-              position={"relative"}
-              _hover={{
-                'scaleX': 1.1,
-                'scaleY': 1.1,
-                transition: 'transform .3s ease-in-out'
-              }}
-              _before={{
-                bgBlendMode: "lighten",
-                boxShadow: "cta-inner",
-                content: '""',
-                inset: 0,
-                rounded: "full",
-                w: "100%",
-                pos: "absolute",
-              }}
-              width={"72px"}
-              height={"72px"}
-              marginTop={"-48px"}
-              mx={"auto"}
-              onClick={hideModal}
-            >
-              <CloseIcon />
-            </Button>
           </Grid>
         </ModalContent>
       </Modal>

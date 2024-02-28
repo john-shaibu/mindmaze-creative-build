@@ -16,6 +16,7 @@ function reducer(state, action) {
             show: true,
             tryCount: action.gameParams.tryCount,
             timeSpent: action.gameParams.timeSpent,
+            streak: action.gameParams.streak,
         }
     }
     if (action.type === 'showModal') {
@@ -60,7 +61,7 @@ function reducer(state, action) {
 }
 
 const StateProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, { gameState: 'start', show: false, modal: '', sound: true, sfx: true, timeSpent: 0, tryCount: 0 });
+    const [state, dispatch] = useReducer(reducer, { gameState: 'start', show: false, modal: '', sound: true, sfx: true, timeSpent: 0, tryCount: 0, streak: 0 });
     return <StateContext.Provider value={{ globalState: state, endGame: (gameParams) => dispatch({ type: 'endGame', gameParams }), setGameState: (gameState) => dispatch({ type: 'setGameState', gameState }), showModal: (modal) => dispatch({ type: 'showModal', modal }), hideModal: () => dispatch({ type: 'hideModal' }), setSound: (bool) => bool ? dispatch({ type: 'enableSound' }) : dispatch({ type: 'disableSound' }), setSfx: (bool) => bool ? dispatch({ type: 'enableSfx' }) : dispatch({ type: 'disableSfx' }) }}>
         {children}
     </StateContext.Provider>
