@@ -189,7 +189,6 @@ export function PlayScreen({ end }) {
   const longestStreak = useRef(0)
   const { globalState, showModal, hideModal, setSound, setSfx } = useGlobalState();
   const { show: isModalOpen, modal: modalId } = globalState;
-  console.log(streak);
 
   const getTiles = (tileCount) => {
     // Throw error if count is not even.

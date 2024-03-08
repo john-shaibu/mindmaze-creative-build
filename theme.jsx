@@ -12,12 +12,12 @@ const baseStyle = definePartsStyle({
     // ...
   },
   thumb: {
-    bg: 'red.500',
+    bg: 'primary.500',
   },
   track: {
-    bg: 'gray.100',
+    bg: 'white',
     _checked: {
-      bg: 'gray.100',
+      bg: 'white',
     },
   },
 })

@@ -9,6 +9,7 @@ import {
   Text,
   Flex,
   VStack,
+  Switch,
   HStack,
 } from "@chakra-ui/react";
 
@@ -28,8 +29,8 @@ import {
 import { formattime } from "./utils";
 
 const Modals = ({ children }) => {
-  const { globalState, showModal, hideModal, setSound, setSfx, setGameState } = useGlobalState();
-  const { show: isOpen, modal: modalId, tryCount, timeSpent, streak } = globalState;
+  const { globalState, showModal, hideModal, toggleSound, toggleSfx, setGameState } = useGlobalState();
+  const { show: isOpen, modal: modalId, tryCount, timeSpent, streak, sound, sfx } = globalState;
 
   return (
     <>
@@ -206,17 +207,31 @@ const Modals = ({ children }) => {
               <Box w="max-content" mx="auto">
                 <SettingsModalHeader />
               </Box>
-              <VStack spacing="24px">
+              <VStack spacing="24px" w="80%" mx="auto" alignItems='flex-start'>
                 <HStack
                   spacing="24px"
                   justifyContent="space-between"
                   alignItems="center"
+                  w="100%"
                 >
                   <Box w="100%">
                     <SoundText />
                   </Box>
                   <Box>
-                    <Box></Box>
+                    <Box><Switch isChecked={sound} onChange={toggleSound}></Switch></Box>
+                  </Box>
+                </HStack>
+                <HStack
+                  spacing="24px"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  w={'100%'}
+                >
+                  <Box w="100%">
+                    <SoundEffectText />
+                  </Box>
+                  <Box>
+                    <Box><Switch isChecked={sfx} onChange={toggleSfx}></Switch></Box>
                   </Box>
                 </HStack>
               </VStack>
@@ -225,9 +240,14 @@ const Modals = ({ children }) => {
                   spacing="24px"
                   justifyContent="space-between"
                   alignItems="center"
+                  w={'100%'}
                 >
-                  <SoundEffectText />
-                  <Box w="100%"></Box>
+                  <Box w="100%">
+                    <SoundEffectText />
+                  </Box>
+                  <Box>
+                    <Box><Switch isChecked={sfx} onChange={toggleSfx}></Switch></Box>
+                  </Box>
                 </HStack>
               </VStack>
             </Container>

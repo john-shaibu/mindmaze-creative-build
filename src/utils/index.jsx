@@ -9,11 +9,6 @@ export const loadSounds = async (title, audioSrc) => {
     })
 }
 
-loadSounds('screen sound', 'assets/joy.mp3').then(({audio}) => {
-    audio.play()
-})
-
-
 const addZero = (value) => {
     return value < 10 ? `0${value}` : value
 }
